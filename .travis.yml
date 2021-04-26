@@ -6,13 +6,11 @@ jdk: oraclejdk9
 
 
 addons:
-  postgresql: "12"
 
   apt:
       packages:
       - oracle-java9-installer
-      - postgresql-12
-      - postgresql-client-12
+
 env:
   global:
     - PGPORT=5432
@@ -20,5 +18,9 @@ env:
 
 before_install:
     - chmod +x mvnw
+        - sudo apt-get update
+        - sudo apt-get install language-pack-es
+        - sudo /etc/init.d/postgresql stop
+        - sudo /etc/init.d/postgresql start 12
 
 script : ./mvnw clean install
