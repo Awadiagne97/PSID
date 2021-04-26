@@ -1,15 +1,23 @@
 language: java
-sudo: true
+sudo: required
 dist: trusty
 jdk: oraclejdk9
 addons:
   postgresql: "13"
-
   apt:
     packages:
+      - postgresql-13
+      - postgresql-client-13
       - oracle-java9-installer
+
+env:
+  global:
+    - PGPORT=5432
+    - PGUSER=postgre
 
 before_install:
   - chmod +x mvnw
 
+before_script:
+  - psql -c 'create database GIVEMEAHAND;' -U postgres
 script : ./mvnw clean install
