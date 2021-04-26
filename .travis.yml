@@ -10,7 +10,4 @@ addons:
       - oracle-java9-installer
 before_install:
   - chmod +x mvnw
-before_script:
-  - psql --version
-  - psql -c 'SELECT version();' -U postgres
 script : ./mvnw clean install
