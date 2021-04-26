@@ -11,9 +11,5 @@ addons:
 
 before_install:
   - chmod +x mvnw
-  - sudo apt-get update
-  - sudo apt-get install --yes postgresql-13
-  - sudo apt-get install --yes postgresql-client-13
-  - sudo /etc/init.d/postgresql restart
-  - sleep 2
+
 script : ./mvnw clean install
