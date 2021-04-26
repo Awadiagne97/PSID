@@ -1,18 +1,17 @@
 language: java
-sudo: required
-dist: xenial
+sudo: true
+dist: trusty
 jdk: oraclejdk9
 
 addons:
   apt:
       packages:
-
       - oracle-java9-installer
 
 
 before_install:
-  - chmod +x mvnw
-  - sudo service postgresql stop
+    - chmod +x mvnw
+    - sudo service postgresql stop
     - sudo apt-get --yes remove postgresql-9.3
     - sudo apt install -yq --no-install-suggests --no-install-recommends postgresql-13-postgis-2.5-scripts postgresql-13 postgresql-client-13 postgresql-13-postgis-2.5
     - sed -e 's/^port.*/port = 5432/' /etc/postgresql/13/main/postgresql.conf > postgresql.conf
