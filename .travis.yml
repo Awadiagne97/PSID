@@ -2,10 +2,8 @@ language: java
 sudo: required
 dist: trusty
 jdk: oraclejdk9
-services:
-  - postgresql
+
 addons:
-  postgresql: "13"
   apt:
       packages:
       - postgresql-13
