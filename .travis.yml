@@ -3,19 +3,22 @@ sudo: true
 dist: trusty
 jdk: oraclejdk9
 
+
+
 addons:
-  postgresql: '13'
+  postgresql: "12"
 
   apt:
       packages:
-        - postgresql-13
-        - postgresql-client-13
-
-
+      - oracle-java9-installer
+      - postgresql-12
+      - postgresql-client-12
+env:
+  global:
+    - PGPORT=5432
+    - PGUSER=postgre
 
 before_install:
     - chmod +x mvnw
-    - sudo sed -i -e 's/^#listen_addresses.*/listen_addresses = "*"/' /etc/postgresql/13/main/postgresql.conf
-    - sudo sed -i -e 's/^port = 5433/port = 5432/' /etc/postgresql/13/main/postgresql.conf
-    - sudo service postgresql restart 13
+
 script : ./mvnw clean install
