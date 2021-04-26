@@ -3,10 +3,14 @@ sudo: true
 dist: trusty
 jdk: oraclejdk9
 addons:
+  postgresql: "13"
+
   apt:
     packages:
       - oracle-java9-installer
 before_install:
   - chmod +x mvnw
-
+before_script:
+  - psql --version
+  - psql -c 'SELECT version();' -U postgres
 script : ./mvnw clean install
