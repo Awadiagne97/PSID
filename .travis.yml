@@ -5,8 +5,8 @@ jdk: oraclejdk9
 addons:
   postgresql: "13"
   apt:
-    packages:
-      - update: true
+      update: true
+      packages:
       - postgresql-13
       - postgresql-13-postgis-3
       - oracle-java9-installer
@@ -14,9 +14,6 @@ addons:
 env:
   global:
     - PGPORT=5432
-jobs:
-    - NODE_ENV=test DB_PORT=5432 DB_USERNAME=postgres
-
 before_install:
   - chmod +x mvnw
   - # Use trust instead of peer authentication:
