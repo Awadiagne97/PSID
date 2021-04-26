@@ -21,6 +21,6 @@ before_install:
     - chmod +x mvnw
     - sudo apt-get update
     - sudo /etc/init.d/postgresql stop
-    - sudo /etc/init.d/postgresql start 12
+    - sudo /etc/init.d/postgresql start 13
 
 script : ./mvnw clean install
