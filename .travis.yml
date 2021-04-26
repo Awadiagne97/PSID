@@ -1,25 +1,23 @@
 language: java
 sudo: required
-dist: trusty
+dist: xenial
 jdk: oraclejdk9
 
 addons:
   apt:
-    sources:
-      - precise-pgdg-13
       packages:
-        - postgresql-13
-        - postgresql-contrib-13
-      postgresql: 13
 
-env:
-  global:
-    - PGPORT=5432
-before_script:
-:
-  - sudo cp /etc/postgresql/9.3/main/pg_hba.conf /etc/postgresql/13/main/pg_hba.conf
-  - sudo /etc/init.d/postgresql restart
-  - psql -U postgres -c 'create database "GIVEMEAHAND";'
-  - psql -U postgres travis-db-test -c 'create extension "uuid-ossp";
+      - oracle-java9-installer
 
+
+before_install:
+  - chmod +x mvnw
+  - sudo service postgresql stop
+    - sudo apt-get --yes remove postgresql-9.3
+    - sudo apt install -yq --no-install-suggests --no-install-recommends postgresql-13-postgis-2.5-scripts postgresql-13 postgresql-client-13 postgresql-13-postgis-2.5
+    - sed -e 's/^port.*/port = 5432/' /etc/postgresql/13/main/postgresql.conf > postgresql.conf
+    - sudo chown postgres postgresql.conf
+    - sudo mv postgresql.conf /etc/postgresql/11/main
+    - sudo cp /etc/postgresql/{9.3,13}/main/pg_hba.conf
+    - sudo service postgresql restart 13
 script : ./mvnw clean install
