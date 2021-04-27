@@ -7,7 +7,6 @@ services:
   - postgresql
 
 addons:
-  postgresql: "12"
   apt:
       packages:
       - oracle-java9-installer
@@ -15,9 +14,5 @@ addons:
 
 before_install:
     - chmod +x mvnw
-    - sudo apt-get update
-    - sudo apt-get --yes remove postgresql\*
-    - sudo apt-get install -y postgresql-12 postgresql-client-12
-    - sudo cp /etc/postgresql/{9.3,12}/main/pg_hba.conf
-    - sudo service postgresql restart 12
+
 script : ./mvnw clean install
