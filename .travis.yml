@@ -9,5 +9,6 @@ services:
 
 before_install:
     - chmod +x mvnw
-
+before_script:
+  - psql --version
 script : ./mvnw clean install
