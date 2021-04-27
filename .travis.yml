@@ -1,11 +1,13 @@
 language: java
 sudo: true
-dist: focal
+dist: focal,trusty
 jdk: oraclejdk9
 
 services:
   - postgresql
 
-before_script:
-  - psql --version
+
+before_install:
+    - chmod +x mvnw
+
 script : ./mvnw clean install
