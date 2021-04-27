@@ -1,6 +1,6 @@
 language: java
 sudo: true
-dist: trusty
+dist: focal
 jdk: oraclejdk9
 
 services:
