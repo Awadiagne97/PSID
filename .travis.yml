@@ -5,9 +5,7 @@ jdk: oraclejdk9
 
 services:
   - postgresql
-script :
-  mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
-  ./mvnw clean install
+
 
 before_install:
     - chmod +x mvnw
