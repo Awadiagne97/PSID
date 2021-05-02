@@ -1,12 +1,3 @@
 language: java
-sudo: true
-dist: focal
-jdk: oraclejdk9
-
-services:
-  - postgresql
-
-
-before_install:
-    - chmod +x mvnw
-
+sudo: false
+script: "mvn test"
