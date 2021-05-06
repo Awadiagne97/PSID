@@ -11,7 +11,7 @@ before_install:
   - sudo apt-get update
   - sudo apt-get --yes remove postgresql\*
   - sudo apt-get install -y postgresql-13 postgresql-client-13
-  - sudo cp /etc/postgresql/{9.6.18,13}/main/pg_hba.conf
+  - sudo cp /etc/postgresql/{*,13}/main/pg_hba.conf
   - sudo service postgresql restart 13
 
 
