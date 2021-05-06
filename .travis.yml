@@ -18,4 +18,5 @@ env:
     - PGPORT=5432
 
 script:
-  - psql -c "SELECT version();" 
+  - psql -c "SELECT version();"
+  - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
