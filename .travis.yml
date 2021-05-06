@@ -3,7 +3,7 @@ sudo: required
 language: java
 
 before_script:
-  - psql -c 'GIVEMEAHAND' -U postgres
+  - psql -c ' create database GIVEMEAHAND' -U postgres
 
 before_install:
 
