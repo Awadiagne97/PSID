@@ -2,8 +2,14 @@ dist: xenial
 sudo: required
 language: java
 
+services:
+  - postgresql
+
+addons:
+  postgresql: '9.6'
+
 before_script:
-  - psql -c 'create database GIVEMEAHAND' -U postgres
+  - cp config/database.yml.travis config/database.yml
 
 before_install:
 
