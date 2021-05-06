@@ -1,7 +1,21 @@
+dist: xenial
+sudo: required
 language: java
-sudo: false
-script: "mvn test"
 
+before_script:
+  - psql -c 'GIVEMEAHAND' -U postgres
 
 before_install:
-  - chmod +x mvnw
+  - sudo apt-get update
+  - sudo apt-get --yes remove postgresql\9.6
+  - sudo apt-get install -y postgresql-13 postgresql-client-13
+  - sudo cp /etc/postgresql/{9.6,13}/main/pg_hba.conf
+  - sudo service postgresql restart 13
+
+env:
+  global:
+    - PGUSER=postgres
+    - PGPORT=5432
+
+script:
+  - psql -c "SELECT version();" 
