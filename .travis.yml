@@ -3,7 +3,7 @@ sudo: required
 language: java
 
 before_script:
-  - psql -c ' create database GIVEMEAHAND' -U postgres
+  - psql -c 'create database GIVEMEAHAND' -U postgres
 
 before_install:
 
@@ -20,5 +20,5 @@ env:
     - PGPORT=5432
 
 script:
-  - psql --version
-  - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+    - psql -c "SELECT version();"
+    - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
