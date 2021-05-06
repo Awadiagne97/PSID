@@ -18,5 +18,7 @@ env:
     - PGPORT=5432
 
 script:
-  - psql -c "SELECT version();"
+  - psql --version
+  - psql -c 'SELECT version();'
+  -U postgres
   - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
